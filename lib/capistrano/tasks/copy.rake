@@ -32,13 +32,6 @@ namespace :copy do
       execute :tar, "-xzf", tmp_file, "-C", release_path
       execute :rm, tmp_file
     end
-
-    Rake::Task["copy:clean"].invoke
-  end
-
-  task :clean do |t|
-    # Delete the local archive
-    File.delete archive_name if File.exists? archive_name
   end
 
   task :create_release => :deploy
