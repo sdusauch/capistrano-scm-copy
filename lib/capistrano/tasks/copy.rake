@@ -11,7 +11,7 @@ namespace :copy do
 
   desc "Archive files to #{archive_name}"
   file archive_name => FileList[include_dir].exclude(archive_name) do |t|
-    cmd = ["tar -cvzf #{t.name}", *exclude_args, *t.prerequisites]
+    cmd = ["tar -czf #{t.name}", *exclude_args, *t.prerequisites]
     sh cmd.join(' ')
   end
 
